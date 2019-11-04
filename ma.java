@@ -20,64 +20,63 @@ public class ma {
         int [][] numeros;
         int filas;
         int columnas;
+        int contP = 0;
         
         //cantidad de filas
         System.out.println("Ingrese cuantas filas requiere");
         filas = entrada.nextInt();
         
-        System.out.println();
+        System.out.println("---------------------------------");
         
         //cantidad de columnas
         System.out.println("Ingrese cuantas columnas requiere");
         columnas = entrada.nextInt();
         
-        //inicializacion de vector
-        numeros = new int[filas][columnas];
+        //inicializacion de vector y matrices
+        numeros = new int[filas][columnas];;
         
-        System.out.println();
+        System.out.println("---------------------------------");
         
         //llenar matriz
         System.out.println("Entrada de datos en la matriz");
-        for (int i = 0; i < numeros.length; i++) {
-            System.out.println("Fila: " + i);
-            for (int j = 0; j < numeros[i].length; j++) {
+        for (int i = 0; i < filas; i++) {            
+            for (int j = 0; j < columnas; j++) {
+                System.out.println("Matriz[" + i + "][" + j +"]:");
                 numeros[i][j] = entrada.nextInt();
+                
+                //comprobamos que cada elemento sea mayor a 0
+                if (numeros[i][j] > 0) {
+                    contP++;
+                }
             }
         }
         
-        System.out.println();
+        System.out.println("---------------------------------");
         
-        //imprimir un dato de una matriz
-        System.out.println("En la 2 fila y 4 columna esta almacenado "
-                + "el valor:" + numeros[0][1]);
-        
-        System.out.println();
-        
-        //imprimir los datos de toda una fila
-        System.out.println("Los valores de la segunda fila son:");
-        for (int i = 0; i < numeros[1].length; i++) {
-            System.out.printf("%3d ", numeros[1][i]);
+        //imprimir matriz completa
+        System.out.println("La matrix completa es: ");
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                System.out.print(numeros[i][j] + " ");
+            }
+            System.out.println("");
         }
         
-        System.out.println();
+        System.out.println("---------------------------------");
         
-        //imprimir los datos de toda una columna
-        System.out.println("Los valores de la segunda columna son:");
-        for (int i = 0; i < numeros[1].length; i++) {
+        //imprimir cols
+        System.out.println("La columnas son: ");
+        for (int i = 0; i < columnas; i++) {
             System.out.println(numeros[i][1]);
         }
         
-        System.out.println();
+        System.out.println("---------------------------------");
         
-        //imprimimos toda la matriz
-        System.out.println("Los valores de toda la matriz son:");
-        for (int r = 0; r < numeros.length; r++) {
-            for (int j = 0; j < numeros[r].length; j++) {
-//                System.out.print(numeros[r][j] + " ");
-                  System.out.printf("%3d ", numeros[r][j]);
-            }
+        //imprimir cuantos numeros positivos
+        if (contP == 0) {
+            System.out.println("No hay numeros positivos en la matriz");
+        } else {
+            System.out.println("Los numeros positivos son " + contP);
         }
-        
-        System.out.println();
     }
 }
